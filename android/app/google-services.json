@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "443090768559",
+    "project_id": "mock-chat-flutter",
+    "storage_bucket": "mock-chat-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443090768559:android:fd13de5fdb9c85d472fa5a",
+        "android_client_info": {
+          "package_name": "com.example.mock_chat_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443090768559-sghvg5n5f7j73q387masgnjf05vkqf8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDs_lCQNMlxj33lBS1c7Lo5cCwaZ5fHjwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443090768559-sghvg5n5f7j73q387masgnjf05vkqf8u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "443090768559-ns5re26bi9np1l5v6r1d3judaqtbs3qs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mockChatFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
