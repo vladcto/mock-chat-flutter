@@ -8,13 +8,23 @@ import 'package:mockito/mockito.dart';
 
 import 'firebase_auth_service_test.mocks.dart';
 
-@GenerateNiceMocks([MockSpec<FirebaseAuth>()])
+@GenerateNiceMocks([
+  MockSpec<FirebaseAuth>(),
+  MockSpec<UserCredential>(),
+  MockSpec<User>(),
+])
 void main() {
   group("Firebase Auth service", () {
     MockFirebaseAuth mockAuth = MockFirebaseAuth();
     FirebaseAuthService authService = FirebaseAuthService(mockAuth);
 
     test("Create", () {
+      MockUserCredential mockUserCredential = MockUserCredential();
+      when(mockUserCredential.user).thenReturn(MockUser());
+      when(mockAuth.createUserWithEmailAndPassword(
+              password: "some", email: "any@gmail.com"))
+          .thenAnswer((realInvocation) async => mockUserCredential);
+
       authService.createUser(password: "some", email: "any@gmail.com");
       verify(mockAuth.createUserWithEmailAndPassword(
               password: "some", email: "any@gmail.com"))

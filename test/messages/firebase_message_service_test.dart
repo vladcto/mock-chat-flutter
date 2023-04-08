@@ -10,9 +10,9 @@ import 'firebase_message_service_test.mocks.dart';
 void main() {
   group("Firebase message service", () {
     MessageDTO message1 =
-        MessageDTO(author: "Me", message: "Some", sendTime: DateTime(2002));
+        MessageDTO(authorName: "Me", message: "Some", authorUid: "123");
     MessageDTO message2 =
-        MessageDTO(author: "Second", message: "Other", sendTime: DateTime(2001));
+        MessageDTO(authorName: "Second", message: "Other", authorUid: "234");
 
     MockDataSnapshot snapshot = MockDataSnapshot();
     MockDataSnapshot snapshot1 = MockDataSnapshot();

@@ -10,10 +10,13 @@ class FirebaseAuthService {
   User? get currentUser => auth.currentUser;
 
   Future<CreateUserStatus> createUser(
-      {required String password, required String email}) async {
+      {required String password, required String email, String? name}) async {
     try {
       var credentail = await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
+      credentail.user!.updateDisplayName(name);
       return CreateUserStatus.succesful(credential: credentail);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
