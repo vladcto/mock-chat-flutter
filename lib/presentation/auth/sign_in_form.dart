@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
+import 'package:mock_chat_flutter/locator.dart';
 
 class SignInForm extends StatefulWidget {
   final Function goToRegistration;
@@ -12,6 +14,7 @@ class _SignInFormState extends State<SignInForm> {
   final _formKey = GlobalKey<FormState>();
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
+  String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +50,30 @@ class _SignInFormState extends State<SignInForm> {
               ),
             ),
           ),
+          AnimatedSwitcher(
+            duration: const Duration(seconds: 1),
+            child: errorMessage == null
+                ? null
+                : Text(
+                    errorMessage!,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
-            child: ElevatedButton(onPressed: () {}, child: const Text("Log in")),
+            child: ElevatedButton(
+                onPressed: () async {
+                  var authService = getIt<FirebaseAuthService>();
+                  var res = await authService.logIn(
+                      password: _passwordController.text,
+                      email: _emailController.text);
+                  res.when(
+                    invalidEmail: () => setErrorMessage("Invalid email"),
+                    wrongCredentials: () => setErrorMessage("Check credentials"),
+                    succesful: (_) => setErrorMessage("Succes"),
+                  );
+                },
+                child: const Text("Log in")),
           ),
           Center(
             child: TextButton(
@@ -63,6 +87,10 @@ class _SignInFormState extends State<SignInForm> {
       ),
     );
   }
+
+  void setErrorMessage(String message) => setState(() {
+        errorMessage = message;
+      });
 
   @override
   void dispose() {

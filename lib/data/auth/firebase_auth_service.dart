@@ -17,12 +17,14 @@ class FirebaseAuthService {
       return CreateUserStatus.succesful(credential: credentail);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
+        case "unknown":
         case "invalid-email":
           return CreateUserStatus.invalidEmail();
         case "email-already-in-use":
           return CreateUserStatus.usedEmail();
         default:
           print("Uncatched exception: $e");
+          print("${e.code}");
           rethrow;
       }
     }
@@ -35,9 +37,11 @@ class FirebaseAuthService {
           await auth.signInWithEmailAndPassword(email: email, password: password);
       return SignUserStatus.succesful(credential: credential);
     } on FirebaseAuthException catch (e) {
+      print("${e.code}");
       switch (e.code) {
         case "invalid-email":
           return SignUserStatus.invalidEmail();
+        case "unknown":
         case "user-not-found":
         case "wrong-password":
           return SignUserStatus.wrongCredentials();

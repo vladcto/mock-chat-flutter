@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
+import 'package:mock_chat_flutter/locator.dart';
 
 class RegistrationForm extends StatefulWidget {
   final Function goToLogin;
@@ -13,6 +15,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _nameController = TextEditingController();
+  String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +47,32 @@ class _RegistrationFormState extends State<RegistrationForm> {
             decoration: const InputDecoration(labelText: "Password"),
           ),
           Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: AnimatedSwitcher(
+              duration: const Duration(seconds: 1),
+              child: errorMessage == null
+                  ? null
+                  : Text(
+                      errorMessage!,
+                      style: const TextStyle(color: Colors.red),
+                    ),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.only(top: 32, left: 16, right: 16, bottom: 16),
             child: ElevatedButton(
-                onPressed: () {}, child: const Text("Create account")),
+                onPressed: () async {
+                  var authService = getIt<FirebaseAuthService>();
+                  var res = await authService.createUser(
+                      password: _passwordController.text,
+                      email: _emailController.text);
+                  res.when(
+                    invalidEmail: () => setErrorMessage("Invalid email"),
+                    usedEmail: () => setErrorMessage("Email used"),
+                    succesful: (_) => setErrorMessage("Succes"),
+                  );
+                },
+                child: const Text("Create account")),
           ),
           Center(
             child: TextButton(
@@ -67,4 +93,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
     _emailController.dispose();
     super.dispose();
   }
+
+  void setErrorMessage(String message) => setState(() {
+        errorMessage = message;
+      });
 }
