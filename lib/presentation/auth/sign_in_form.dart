@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
 import 'package:mock_chat_flutter/locator.dart';
+import 'package:mock_chat_flutter/presentation/messages_page.dart';
 
 class SignInForm extends StatefulWidget {
   final Function goToRegistration;
@@ -70,7 +71,11 @@ class _SignInFormState extends State<SignInForm> {
                   res.when(
                     invalidEmail: () => setErrorMessage("Invalid email"),
                     wrongCredentials: () => setErrorMessage("Check credentials"),
-                    succesful: (_) => setErrorMessage("Succes"),
+                    succesful: (_) => Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => const MessagesPage(),
+                      ),
+                    ),
                   );
                 },
                 child: const Text("Log in")),

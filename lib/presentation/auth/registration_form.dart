@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
 import 'package:mock_chat_flutter/locator.dart';
 
+import '../messages_page.dart';
+
 class RegistrationForm extends StatefulWidget {
   final Function goToLogin;
   const RegistrationForm({Key? key, required this.goToLogin}) : super(key: key);
@@ -69,7 +71,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   res.when(
                     invalidEmail: () => setErrorMessage("Invalid email"),
                     usedEmail: () => setErrorMessage("Email used"),
-                    succesful: (_) => setErrorMessage("Succes"),
+                    succesful: (_) => Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => const MessagesPage(),
+                      ),
+                    ),
                   );
                 },
                 child: const Text("Create account")),
