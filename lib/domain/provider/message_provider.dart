@@ -1,5 +1,4 @@
 import 'package:mock_chat_flutter/data/messages/message_dto.dart';
-import 'package:mock_chat_flutter/data/messages/service/firebase_message_service.dart';
 import 'package:mock_chat_flutter/data/messages/service/message_service.dart';
 import 'package:riverpod/riverpod.dart';
 
