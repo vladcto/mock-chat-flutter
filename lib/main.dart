@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mock_chat_flutter/firebase_options.dart';
+import 'package:mock_chat_flutter/presentation/auth/auth_page.dart';
 import 'package:mock_chat_flutter/presentation/messages_page.dart';
 
 import 'locator.dart';
@@ -19,7 +20,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MessagesPage(),
+      home: AuthPage(),
     );
   }
 }
