@@ -8,14 +8,14 @@ part of 'message_dto.dart';
 
 _$_MessageDTO _$$_MessageDTOFromJson(Map<String, dynamic> json) =>
     _$_MessageDTO(
-      author: json['author'] as String,
+      authorName: json['authorName'] as String,
+      authorUid: json['authorUid'] as String,
       message: json['message'] as String,
-      sendTime: DateTime.parse(json['sendTime'] as String),
     );
 
 Map<String, dynamic> _$$_MessageDTOToJson(_$_MessageDTO instance) =>
     <String, dynamic>{
-      'author': instance.author,
+      'authorName': instance.authorName,
+      'authorUid': instance.authorUid,
       'message': instance.message,
-      'sendTime': instance.sendTime.toIso8601String(),
     };

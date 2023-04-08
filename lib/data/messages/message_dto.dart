@@ -6,9 +6,9 @@ part 'message_dto.g.dart';
 @freezed
 abstract class MessageDTO with _$MessageDTO {
   factory MessageDTO({
-    required String author,
+    required String authorName,
+    required String authorUid,
     required String message,
-    required DateTime sendTime,
   }) = _MessageDTO;
 
   factory MessageDTO.fromJson(Map<String, dynamic> json) =>

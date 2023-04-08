@@ -20,9 +20,9 @@ MessageDTO _$MessageDTOFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MessageDTO {
-  String get author => throw _privateConstructorUsedError;
+  String get authorName => throw _privateConstructorUsedError;
+  String get authorUid => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
-  DateTime get sendTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $MessageDTOCopyWith<$Res> {
           MessageDTO value, $Res Function(MessageDTO) then) =
       _$MessageDTOCopyWithImpl<$Res, MessageDTO>;
   @useResult
-  $Res call({String author, String message, DateTime sendTime});
+  $Res call({String authorName, String authorUid, String message});
 }
 
 /// @nodoc
@@ -52,23 +52,23 @@ class _$MessageDTOCopyWithImpl<$Res, $Val extends MessageDTO>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? author = null,
+    Object? authorName = null,
+    Object? authorUid = null,
     Object? message = null,
-    Object? sendTime = null,
   }) {
     return _then(_value.copyWith(
-      author: null == author
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
+      authorName: null == authorName
+          ? _value.authorName
+          : authorName // ignore: cast_nullable_to_non_nullable
+              as String,
+      authorUid: null == authorUid
+          ? _value.authorUid
+          : authorUid // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      sendTime: null == sendTime
-          ? _value.sendTime
-          : sendTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ) as $Val);
   }
 }
@@ -81,7 +81,7 @@ abstract class _$$_MessageDTOCopyWith<$Res>
       __$$_MessageDTOCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String author, String message, DateTime sendTime});
+  $Res call({String authorName, String authorUid, String message});
 }
 
 /// @nodoc
@@ -95,23 +95,23 @@ class __$$_MessageDTOCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? author = null,
+    Object? authorName = null,
+    Object? authorUid = null,
     Object? message = null,
-    Object? sendTime = null,
   }) {
     return _then(_$_MessageDTO(
-      author: null == author
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
+      authorName: null == authorName
+          ? _value.authorName
+          : authorName // ignore: cast_nullable_to_non_nullable
+              as String,
+      authorUid: null == authorUid
+          ? _value.authorUid
+          : authorUid // ignore: cast_nullable_to_non_nullable
               as String,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      sendTime: null == sendTime
-          ? _value.sendTime
-          : sendTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
     ));
   }
 }
@@ -120,21 +120,23 @@ class __$$_MessageDTOCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MessageDTO implements _MessageDTO {
   _$_MessageDTO(
-      {required this.author, required this.message, required this.sendTime});
+      {required this.authorName,
+      required this.authorUid,
+      required this.message});
 
   factory _$_MessageDTO.fromJson(Map<String, dynamic> json) =>
       _$$_MessageDTOFromJson(json);
 
   @override
-  final String author;
+  final String authorName;
+  @override
+  final String authorUid;
   @override
   final String message;
-  @override
-  final DateTime sendTime;
 
   @override
   String toString() {
-    return 'MessageDTO(author: $author, message: $message, sendTime: $sendTime)';
+    return 'MessageDTO(authorName: $authorName, authorUid: $authorUid, message: $message)';
   }
 
   @override
@@ -142,15 +144,16 @@ class _$_MessageDTO implements _MessageDTO {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MessageDTO &&
-            (identical(other.author, author) || other.author == author) &&
-            (identical(other.message, message) || other.message == message) &&
-            (identical(other.sendTime, sendTime) ||
-                other.sendTime == sendTime));
+            (identical(other.authorName, authorName) ||
+                other.authorName == authorName) &&
+            (identical(other.authorUid, authorUid) ||
+                other.authorUid == authorUid) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, author, message, sendTime);
+  int get hashCode => Object.hash(runtimeType, authorName, authorUid, message);
 
   @JsonKey(ignore: true)
   @override
@@ -168,19 +171,19 @@ class _$_MessageDTO implements _MessageDTO {
 
 abstract class _MessageDTO implements MessageDTO {
   factory _MessageDTO(
-      {required final String author,
-      required final String message,
-      required final DateTime sendTime}) = _$_MessageDTO;
+      {required final String authorName,
+      required final String authorUid,
+      required final String message}) = _$_MessageDTO;
 
   factory _MessageDTO.fromJson(Map<String, dynamic> json) =
       _$_MessageDTO.fromJson;
 
   @override
-  String get author;
+  String get authorName;
+  @override
+  String get authorUid;
   @override
   String get message;
-  @override
-  DateTime get sendTime;
   @override
   @JsonKey(ignore: true)
   _$$_MessageDTOCopyWith<_$_MessageDTO> get copyWith =>
