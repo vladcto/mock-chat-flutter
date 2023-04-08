@@ -29,11 +29,11 @@ void main() {
     FirebaseMessageService firebaseMessageService =
         FirebaseMessageService(mockDatabaseRef);
 
-    test("Firebase get message", () async {
+    test("Get messages", () async {
       expect(await firebaseMessageService.getMessages(), [message1, message2]);
     });
 
-    test("Firebase send message", () async {
+    test("Send message", () async {
       firebaseMessageService.addMessage(message1);
       verify(mockDatabaseRef.set(message1.toJson()));
     });
