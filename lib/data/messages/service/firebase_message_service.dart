@@ -1,21 +1,20 @@
-import 'package:injectable/injectable.dart';
+import 'dart:async';
+
 import 'package:mock_chat_flutter/data/messages/message_dto.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'message_service.dart';
 
-@Named("FirebaseMessageLocation")
 // ignore: unused_element
-DatabaseReference _defaultRef = FirebaseDatabase.instance.ref("/message");
+DatabaseReference _defaultRef = FirebaseDatabase.instance.ref();
 
-@Injectable(as: MessageService)
 class FirebaseMessageService implements MessageService {
   final DatabaseReference ref;
 
-  FirebaseMessageService(@Named("FirebaseMessageLocation") this.ref);
+  FirebaseMessageService(this.ref);
 
   @override
   void addMessage(MessageDTO message) {
-    ref.set(message.toJson());
+    ref.push().set(message.toJson());
   }
 
   @override
@@ -27,4 +26,7 @@ class FirebaseMessageService implements MessageService {
     }
     return res;
   }
+
+  @override
+  void listenUpdates(Function callback) => ref.onValue.listen((event) => callback());
 }

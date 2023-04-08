@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "443090768559",
+    "firebase_url": "https://mock-chat-flutter-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "mock-chat-flutter",
     "storage_bucket": "mock-chat-flutter.appspot.com"
   },
@@ -31,10 +32,10 @@
               "client_type": 3
             },
             {
-              "client_id": "443090768559-ns5re26bi9np1l5v6r1d3judaqtbs3qs.apps.googleusercontent.com",
+              "client_id": "443090768559-7kfa90qt83a63a23m322uovglnuk16jr.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.mockChatFlutter"
+                "bundle_id": "com.example.mockChatFlutter.RunnerTests"
               }
             }
           ]

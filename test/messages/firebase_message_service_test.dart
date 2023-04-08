@@ -24,6 +24,7 @@ void main() {
 
     MockDatabaseReference mockDatabaseRef = MockDatabaseReference();
     when(mockDatabaseRef.get()).thenAnswer((_) async => snapshot);
+    when(mockDatabaseRef.push()).thenReturn(mockDatabaseRef);
 
     FirebaseMessageService firebaseMessageService =
         FirebaseMessageService(mockDatabaseRef);
