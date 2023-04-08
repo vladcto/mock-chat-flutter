@@ -20,7 +20,7 @@ class MessagesPage extends StatelessWidget {
     return ProviderScope(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(''),
+          title: const Text('Mock Chat'),
         ),
         body: const _MainContent(),
       ),
@@ -107,14 +107,18 @@ class _MessageInputState extends State<_MessageInput> {
             ),
           ),
           IconButton(
-            onPressed: () => getIt<MessageService>().addMessage(
-              MessageDTO(
-                authorName: getIt<FirebaseAuthService>().currentUser!.displayName ??
-                    "Anonymus",
-                message: _messageTextContoller.text,
-                authorUid: getIt<FirebaseAuthService>().currentUser!.uid,
-              ),
-            ),
+            onPressed: () {
+              getIt<MessageService>().addMessage(
+                MessageDTO(
+                  authorName:
+                      getIt<FirebaseAuthService>().currentUser!.displayName ??
+                          "Anonymus",
+                  message: _messageTextContoller.text,
+                  authorUid: getIt<FirebaseAuthService>().currentUser!.uid,
+                ),
+              );
+              _messageTextContoller.text = "";
+            },
             icon: const Icon(Icons.send_outlined),
           ),
         ],

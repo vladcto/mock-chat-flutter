@@ -20,8 +20,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(canvasColor: Colors.transparent),
-      home: AuthPage(),
+      home: const AuthPage(),
     );
   }
 }
