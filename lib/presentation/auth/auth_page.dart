@@ -15,15 +15,32 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authHeight = MediaQuery.of(context).size.height * 0.45;
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          const SizedBox(
-            height: 320,
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.lightBlue.shade200, Colors.lightBlue.shade300],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+            ),
           ),
-          Expanded(
+          Positioned(
+            height: authHeight,
+            left: 0,
+            bottom: 0,
+            right: 0,
             child: PageTransitionSwitcher(
-              duration: Duration(seconds: 1),
+              duration: const Duration(seconds: 1),
               reverse: signInForm,
               transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
                   SharedAxisTransition(
@@ -67,11 +84,11 @@ class _AuthCard extends StatelessWidget {
       decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(8),
-            topRight: Radius.circular(8),
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
           ),
           boxShadow: [
-            BoxShadow(color: Colors.black12, offset: Offset(0, -4), blurRadius: 16)
+            BoxShadow(color: Colors.black26, offset: Offset(0, -4), blurRadius: 16)
           ]),
       child: Center(
         child: FractionallySizedBox(

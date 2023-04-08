@@ -16,7 +16,9 @@ class FirebaseAuthService {
         email: email,
         password: password,
       );
-      credentail.user!.updateDisplayName(name);
+      User user = credentail.user!;
+      await user.updateDisplayName(name);
+      await user.reload();
       return CreateUserStatus.succesful(credential: credentail);
     } on FirebaseAuthException catch (e) {
       switch (e.code) {

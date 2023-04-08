@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
 import 'package:mock_chat_flutter/locator.dart';
-import 'package:mock_chat_flutter/presentation/messages_page.dart';
+import 'package:mock_chat_flutter/presentation/messages/messages_page.dart';
 
 class SignInForm extends StatefulWidget {
   final Function goToRegistration;

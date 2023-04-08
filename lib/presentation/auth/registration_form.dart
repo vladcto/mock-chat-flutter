@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
 import 'package:mock_chat_flutter/locator.dart';
 
-import '../messages_page.dart';
+import '../messages/messages_page.dart';
 
 class RegistrationForm extends StatefulWidget {
   final Function goToLogin;
@@ -66,8 +66,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 onPressed: () async {
                   var authService = getIt<FirebaseAuthService>();
                   var res = await authService.createUser(
-                      password: _passwordController.text,
-                      email: _emailController.text);
+                    password: _passwordController.text,
+                    email: _emailController.text,
+                    name: _nameController.text,
+                  );
                   res.when(
                     invalidEmail: () => setErrorMessage("Invalid email"),
                     usedEmail: () => setErrorMessage("Email used"),
