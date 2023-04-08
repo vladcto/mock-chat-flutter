@@ -41,11 +41,23 @@ class _SignInFormState extends State<SignInForm> {
             enableSuggestions: false,
             autocorrect: false,
             decoration: const InputDecoration(labelText: "Password"),
+            validator: (_) =>
+                _passwordController.text.length > 5 ? null : "Password to week",
           ),
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () async {
+                var authService = getIt<FirebaseAuthService>();
+                try {
+                  await authService.resetPassword(email: _emailController.text);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Check your email")));
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("This mail does not exist.")));
+                }
+              },
               child: const Text(
                 "Forget password?",
               ),

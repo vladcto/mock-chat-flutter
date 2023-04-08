@@ -57,6 +57,6 @@ class FirebaseAuthService {
     }
   }
 
-  void resetPassword({required String email}) =>
+  Future<void> resetPassword({required String email}) =>
       auth.sendPasswordResetEmail(email: email);
 }
