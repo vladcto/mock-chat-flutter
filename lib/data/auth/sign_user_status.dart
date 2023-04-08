@@ -4,11 +4,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'sign_user_status.freezed.dart';
 
 @freezed
-class SignUserStatus {
-  SignUserStatus._();
+class SignUserStatus with _$SignUserStatus {
+  const SignUserStatus._();
 
-  factory SignUserStatus.invalidEmail() = InvalidEmailSignStatus;
-  factory SignUserStatus.wrongCredentials() = WrongCredentialsSignStatus;
-  factory SignUserStatus.succesful({required UserCredential credential}) =
+  const factory SignUserStatus.invalidEmail() = InvalidEmailSignStatus;
+  const factory SignUserStatus.wrongCredentials() = WrongCredentialsSignStatus;
+  const factory SignUserStatus.succesful({required UserCredential credential}) =
       SuccesfulSignStatus;
 }

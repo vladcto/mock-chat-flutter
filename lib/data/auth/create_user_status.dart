@@ -4,11 +4,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'create_user_status.freezed.dart';
 
 @freezed
-class CreateUserStatus {
-  CreateUserStatus._();
+class CreateUserStatus with _$CreateUserStatus {
+  const CreateUserStatus._();
 
-  factory CreateUserStatus.invalidEmail() = InvalidEmailCreateException;
-  factory CreateUserStatus.usedEmail() = UsedEmailCreateException;
-  factory CreateUserStatus.succesful({required UserCredential credential}) =
+  const factory CreateUserStatus.invalidEmail() = InvalidEmailCreateException;
+  const factory CreateUserStatus.usedEmail() = UsedEmailCreateException;
+  const factory CreateUserStatus.succesful({required UserCredential credential}) =
       SuccesfulCreate;
 }

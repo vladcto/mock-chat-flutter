@@ -100,7 +100,7 @@ class __$$InvalidEmailSignStatusCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InvalidEmailSignStatus extends InvalidEmailSignStatus {
-  _$InvalidEmailSignStatus() : super._();
+  const _$InvalidEmailSignStatus() : super._();
 
   @override
   String toString() {
@@ -187,8 +187,8 @@ class _$InvalidEmailSignStatus extends InvalidEmailSignStatus {
 }
 
 abstract class InvalidEmailSignStatus extends SignUserStatus {
-  factory InvalidEmailSignStatus() = _$InvalidEmailSignStatus;
-  InvalidEmailSignStatus._() : super._();
+  const factory InvalidEmailSignStatus() = _$InvalidEmailSignStatus;
+  const InvalidEmailSignStatus._() : super._();
 }
 
 /// @nodoc
@@ -212,7 +212,7 @@ class __$$WrongCredentialsSignStatusCopyWithImpl<$Res>
 /// @nodoc
 
 class _$WrongCredentialsSignStatus extends WrongCredentialsSignStatus {
-  _$WrongCredentialsSignStatus() : super._();
+  const _$WrongCredentialsSignStatus() : super._();
 
   @override
   String toString() {
@@ -300,8 +300,8 @@ class _$WrongCredentialsSignStatus extends WrongCredentialsSignStatus {
 }
 
 abstract class WrongCredentialsSignStatus extends SignUserStatus {
-  factory WrongCredentialsSignStatus() = _$WrongCredentialsSignStatus;
-  WrongCredentialsSignStatus._() : super._();
+  const factory WrongCredentialsSignStatus() = _$WrongCredentialsSignStatus;
+  const WrongCredentialsSignStatus._() : super._();
 }
 
 /// @nodoc
@@ -338,7 +338,7 @@ class __$$SuccesfulSignStatusCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccesfulSignStatus extends SuccesfulSignStatus {
-  _$SuccesfulSignStatus({required this.credential}) : super._();
+  const _$SuccesfulSignStatus({required this.credential}) : super._();
 
   @override
   final UserCredential credential;
@@ -438,9 +438,9 @@ class _$SuccesfulSignStatus extends SuccesfulSignStatus {
 }
 
 abstract class SuccesfulSignStatus extends SignUserStatus {
-  factory SuccesfulSignStatus({required final UserCredential credential}) =
-      _$SuccesfulSignStatus;
-  SuccesfulSignStatus._() : super._();
+  const factory SuccesfulSignStatus(
+      {required final UserCredential credential}) = _$SuccesfulSignStatus;
+  const SuccesfulSignStatus._() : super._();
 
   UserCredential get credential;
   @JsonKey(ignore: true)

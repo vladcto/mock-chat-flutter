@@ -101,7 +101,7 @@ class __$$InvalidEmailCreateExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InvalidEmailCreateException extends InvalidEmailCreateException {
-  _$InvalidEmailCreateException() : super._();
+  const _$InvalidEmailCreateException() : super._();
 
   @override
   String toString() {
@@ -188,8 +188,8 @@ class _$InvalidEmailCreateException extends InvalidEmailCreateException {
 }
 
 abstract class InvalidEmailCreateException extends CreateUserStatus {
-  factory InvalidEmailCreateException() = _$InvalidEmailCreateException;
-  InvalidEmailCreateException._() : super._();
+  const factory InvalidEmailCreateException() = _$InvalidEmailCreateException;
+  const InvalidEmailCreateException._() : super._();
 }
 
 /// @nodoc
@@ -211,7 +211,7 @@ class __$$UsedEmailCreateExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UsedEmailCreateException extends UsedEmailCreateException {
-  _$UsedEmailCreateException() : super._();
+  const _$UsedEmailCreateException() : super._();
 
   @override
   String toString() {
@@ -298,8 +298,8 @@ class _$UsedEmailCreateException extends UsedEmailCreateException {
 }
 
 abstract class UsedEmailCreateException extends CreateUserStatus {
-  factory UsedEmailCreateException() = _$UsedEmailCreateException;
-  UsedEmailCreateException._() : super._();
+  const factory UsedEmailCreateException() = _$UsedEmailCreateException;
+  const UsedEmailCreateException._() : super._();
 }
 
 /// @nodoc
@@ -336,7 +336,7 @@ class __$$SuccesfulCreateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccesfulCreate extends SuccesfulCreate {
-  _$SuccesfulCreate({required this.credential}) : super._();
+  const _$SuccesfulCreate({required this.credential}) : super._();
 
   @override
   final UserCredential credential;
@@ -434,9 +434,9 @@ class _$SuccesfulCreate extends SuccesfulCreate {
 }
 
 abstract class SuccesfulCreate extends CreateUserStatus {
-  factory SuccesfulCreate({required final UserCredential credential}) =
+  const factory SuccesfulCreate({required final UserCredential credential}) =
       _$SuccesfulCreate;
-  SuccesfulCreate._() : super._();
+  const SuccesfulCreate._() : super._();
 
   UserCredential get credential;
   @JsonKey(ignore: true)
