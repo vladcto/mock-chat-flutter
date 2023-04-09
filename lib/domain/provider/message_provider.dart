@@ -6,6 +6,10 @@ class MessageProvider extends StateNotifier<List<MessageDTO>> {
   final MessageService service;
 
   MessageProvider(this.service, super.state) {
-    service.listenUpdates(() async => state = await service.getMessages());
+    service.listenUpdates(() => service.getMessages().then((value) {
+          if (!mounted) return;
+          state = value;
+        }));
+    service.getMessages().then((value) => state = value);
   }
 }

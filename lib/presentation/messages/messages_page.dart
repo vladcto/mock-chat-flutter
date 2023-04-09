@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
@@ -5,6 +6,7 @@ import 'package:mock_chat_flutter/data/messages/message_dto.dart';
 import 'package:mock_chat_flutter/data/messages/service/message_service.dart';
 import 'package:mock_chat_flutter/domain/provider/message_provider.dart';
 import 'package:mock_chat_flutter/locator.dart';
+import 'package:mock_chat_flutter/presentation/auth/auth_page.dart';
 import 'package:mock_chat_flutter/presentation/messages/message_card.dart';
 
 StateNotifierProvider<MessageProvider, List<MessageDTO>> messageProvider =
@@ -19,6 +21,18 @@ class MessagesPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Mock Chat'),
+          actions: [
+            IconButton(
+              onPressed: () => getIt<FirebaseAuthService>().signOut().then(
+                    (value) => Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => const AuthPage(),
+                      ),
+                    ),
+                  ),
+              icon: const Icon(Icons.exit_to_app),
+            )
+          ],
         ),
         body: const _MainContent(),
       ),
@@ -106,6 +120,7 @@ class _MessageInputState extends State<_MessageInput> {
           ),
           IconButton(
             onPressed: () {
+              if (_messageTextContoller.text.trim().isEmpty) return;
               getIt<MessageService>().addMessage(
                 MessageDTO(
                   authorName:

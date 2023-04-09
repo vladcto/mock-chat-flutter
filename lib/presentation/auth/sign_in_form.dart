@@ -19,6 +19,8 @@ class _SignInFormState extends State<SignInForm> {
 
   @override
   Widget build(BuildContext context) {
+    var scaffoldMessenger = ScaffoldMessenger.of(context);
+
     return Form(
       key: _formKey,
       child: Column(
@@ -41,8 +43,10 @@ class _SignInFormState extends State<SignInForm> {
             enableSuggestions: false,
             autocorrect: false,
             decoration: const InputDecoration(labelText: "Password"),
-            validator: (_) =>
-                _passwordController.text.length > 5 ? null : "Password to week",
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            validator: (_) => _passwordController.text.length > 5
+                ? null
+                : "Password length need more than 4 symbol",
           ),
           Align(
             alignment: Alignment.centerRight,
@@ -51,10 +55,10 @@ class _SignInFormState extends State<SignInForm> {
                 var authService = getIt<FirebaseAuthService>();
                 try {
                   await authService.resetPassword(email: _emailController.text);
-                  ScaffoldMessenger.of(context).showSnackBar(
+                  scaffoldMessenger.showSnackBar(
                       const SnackBar(content: Text("Check your email")));
                 } catch (e) {
-                  ScaffoldMessenger.of(context).showSnackBar(
+                  scaffoldMessenger.showSnackBar(
                       const SnackBar(content: Text("This mail does not exist.")));
                 }
               },

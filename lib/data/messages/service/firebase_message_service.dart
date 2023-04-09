@@ -28,5 +28,6 @@ class FirebaseMessageService implements MessageService {
   }
 
   @override
-  void listenUpdates(Function callback) => ref.onValue.listen((event) => callback());
+  void listenUpdates(Function callback) =>
+      ref.onChildAdded.listen((event) => ()).onData((data) => callback());
 }

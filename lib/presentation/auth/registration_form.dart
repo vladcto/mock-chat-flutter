@@ -47,8 +47,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
             enableSuggestions: false,
             autocorrect: false,
             decoration: const InputDecoration(labelText: "Password"),
-            validator: (_) =>
-                _passwordController.text.length > 5 ? null : "Password to week",
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            validator: (_) => _passwordController.text.length > 5
+                ? null
+                : "Password length need more than 4 symbol",
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16),
