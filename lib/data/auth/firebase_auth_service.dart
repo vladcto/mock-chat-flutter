@@ -24,9 +24,9 @@ class FirebaseAuthService {
       switch (e.code) {
         case "unknown":
         case "invalid-email":
-          return CreateUserStatus.invalidEmail();
+          return const CreateUserStatus.invalidEmail();
         case "email-already-in-use":
-          return CreateUserStatus.usedEmail();
+          return const CreateUserStatus.usedEmail();
         default:
           print("Uncatched exception: $e");
           print("${e.code}");

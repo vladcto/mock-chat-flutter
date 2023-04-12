@@ -25,7 +25,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -72,16 +75,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'mock-chat-flutter.appspot.com',
     iosClientId: '443090768559-ns5re26bi9np1l5v6r1d3judaqtbs3qs.apps.googleusercontent.com',
     iosBundleId: 'com.example.mockChatFlutter',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyD7l5yvKn3jO2Jw1xjSq-miqXcz-VybNVU',
-    appId: '1:443090768559:ios:0124bb1e35d5662072fa5a',
-    messagingSenderId: '443090768559',
-    projectId: 'mock-chat-flutter',
-    databaseURL: 'https://mock-chat-flutter-default-rtdb.europe-west1.firebasedatabase.app',
-    storageBucket: 'mock-chat-flutter.appspot.com',
-    iosClientId: '443090768559-7kfa90qt83a63a23m322uovglnuk16jr.apps.googleusercontent.com',
-    iosBundleId: 'com.example.mockChatFlutter.RunnerTests',
   );
 }

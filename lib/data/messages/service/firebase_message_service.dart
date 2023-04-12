@@ -4,9 +4,6 @@ import 'package:mock_chat_flutter/data/messages/message_dto.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'message_service.dart';
 
-// ignore: unused_element
-DatabaseReference _defaultRef = FirebaseDatabase.instance.ref();
-
 class FirebaseMessageService implements MessageService {
   final DatabaseReference ref;
 
@@ -28,6 +25,6 @@ class FirebaseMessageService implements MessageService {
   }
 
   @override
-  void listenUpdates(Function callback) =>
-      ref.onChildAdded.listen((event) => ()).onData((data) => callback());
+  StreamSubscription listenUpdates(Function callback) =>
+      ref.onChildAdded.listen((event) {})..onData((data) => callback());
 }
