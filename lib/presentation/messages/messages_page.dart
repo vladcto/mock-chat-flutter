@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
@@ -10,7 +9,7 @@ import 'package:mock_chat_flutter/presentation/auth/auth_page.dart';
 import 'package:mock_chat_flutter/presentation/messages/message_card.dart';
 
 StateNotifierProvider<MessageProvider, List<MessageDTO>> messageProvider =
-    StateNotifierProvider((ref) => MessageProvider(getIt<MessageService>(), []));
+    StateNotifierProvider((ref) => MessageProvider(getIt<MessageService>()));
 
 class MessagesPage extends StatelessWidget {
   const MessagesPage({Key? key}) : super(key: key);

@@ -45,11 +45,11 @@ class FirebaseAuthService {
       print("${e.code}");
       switch (e.code) {
         case "invalid-email":
-          return SignUserStatus.invalidEmail();
+          return const SignUserStatus.invalidEmail();
         case "unknown":
         case "user-not-found":
         case "wrong-password":
-          return SignUserStatus.wrongCredentials();
+          return const SignUserStatus.wrongCredentials();
         default:
           print("Uncatched exception: $e");
           rethrow;

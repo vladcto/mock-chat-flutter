@@ -1,10 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:mock_chat_flutter/data/auth/firebase_auth_service.dart';
-import 'package:mock_chat_flutter/locator.dart';
 import 'package:mock_chat_flutter/presentation/auth/registration_form.dart';
 import 'package:mock_chat_flutter/presentation/auth/sign_in_form.dart';
-import 'package:mock_chat_flutter/presentation/messages/messages_page.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -18,7 +15,7 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    final authHeight = MediaQuery.of(context).size.height * 0.45;
+    final authHeight = MediaQuery.of(context).size.height * 0.55;
     return Scaffold(
       body: Stack(
         children: [
